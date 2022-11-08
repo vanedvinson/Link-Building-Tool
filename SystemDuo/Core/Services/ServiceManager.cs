@@ -7,33 +7,39 @@ namespace SystemDuo.Core.Services
 {
     public class ServiceManager:IServiceManager
     {
-        private readonly Lazy<IJobService> _lazyJobService; 
-        private readonly Lazy<ICompanyService> _lazyCompanyService; 
-        private readonly Lazy<ISkillsService> _lazySkillService; 
-        private readonly Lazy<ICategoryService> _lazyJobCategoryService; 
-        private readonly Lazy<IUserService> _lazyUserService; 
-        private readonly Lazy<IEmployeeService> _lazyEmployeeService; 
-        private readonly Lazy<IApplicationService> _lazyApplicationService; 
-        private readonly Lazy<IUserCalendarService> _lazyUserCalendarService;
+        private readonly Lazy<IUserService> _lazyUserService;
+
+        private readonly Lazy<ILinkAttributeService> _linkAttributeService;
+        private readonly Lazy<IWebmasterService> _webmasterService;
+        private readonly Lazy<ITodoService> _todoService;
+        private readonly Lazy<IDomainService> _domain;
+        private readonly Lazy<IClientService> _client;
+        private readonly Lazy<IClientTypeService> _clientType;
+        private readonly Lazy<IStatusService> _status;
+        private readonly Lazy<ILinkTypeService> _linkTypeService;
+
         public ServiceManager(IRepositoryManager repositoryManager,UserManager<User> userManager,IMailService mailService,RoleManager<Role> roleManager,ITokenService tokenService)
         {
-            _lazyJobService = new Lazy<IJobService>(() => new JobService(repositoryManager,userManager));
-            _lazyCompanyService = new Lazy<ICompanyService>(() => new CompanyService(repositoryManager));
-            _lazySkillService = new Lazy<ISkillsService>(() => new SkillsService(repositoryManager));
-            _lazyJobCategoryService = new Lazy<ICategoryService>(() => new CategoryService(repositoryManager));
             _lazyUserService = new Lazy<IUserService>(() => new UserService(userManager, mailService, tokenService,roleManager, repositoryManager));
-            _lazyEmployeeService = new Lazy<IEmployeeService>(() => new EmployeeService(repositoryManager,userManager));
-            _lazyApplicationService = new Lazy<IApplicationService>(() => new ApplicationService(repositoryManager));
-            _lazyUserCalendarService = new Lazy<IUserCalendarService>(() => new UserCalendarService(repositoryManager,userManager));
-        }
-        public IJobService JobService => _lazyJobService.Value;
-        public ICompanyService CompanyService => _lazyCompanyService.Value;
-        public ISkillsService SkillService => _lazySkillService.Value;
-        public ICategoryService JobCategoryService => _lazyJobCategoryService.Value;
-        public IUserService UserService => _lazyUserService.Value;
-        public IEmployeeService EmployeeService => _lazyEmployeeService.Value;
-        public IApplicationService ApplicationService => _lazyApplicationService.Value;
 
-        public IUserCalendarService UserCalendarService => _lazyUserCalendarService.Value;
+            _linkAttributeService = new Lazy<ILinkAttributeService>(() => new LinkAttributeService(repositoryManager));
+            _webmasterService = new Lazy<IWebmasterService>(() => new WebmasterService(repositoryManager));
+            _todoService = new Lazy<ITodoService>(() => new TodoService(repositoryManager));
+            _domain = new Lazy<IDomainService>(() => new DomainService(repositoryManager));
+            _client = new Lazy<IClientService>(() => new ClientService(repositoryManager));
+            _clientType = new Lazy<IClientTypeService>(() => new ClientTypeService(repositoryManager));
+            _status = new Lazy<IStatusService>(() => new StatusService(repositoryManager));
+            _linkTypeService = new Lazy<ILinkTypeService>(() => new LinkTypeService(repositoryManager));
+        }
+        public IUserService UserService => _lazyUserService.Value;
+
+        public ILinkAttributeService LinkAttributeService => _linkAttributeService.Value;
+        public IWebmasterService WebmasterService => _webmasterService.Value;
+        public ITodoService TodoService => _todoService.Value;
+        public IDomainService DomainService => _domain.Value;
+        public IClientService ClientService => _client.Value;
+        public IClientTypeService ClientTypeService => _clientType.Value;
+        public IStatusService StatusService => _status.Value;
+        public ILinkTypeService LinkTypeService => _linkTypeService.Value;
     }
 }

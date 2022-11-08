@@ -270,23 +270,23 @@ namespace SystemDuo.Core.Services
             // var users = await _userManager.GetUsersInRoleAsync(role);         
             return test1;
         }
-        public async Task<IEnumerable<User>> GetAvailableCandidatesForApplication(Guid jobId)
-        {
-            var allUser = await _userManager.GetUsersInRoleAsync("Candidate");
+        //public async Task<IEnumerable<User>> GetAvailableCandidatesForApplication(Guid jobId)
+        //{
+        //    var allUser = await _userManager.GetUsersInRoleAsync("Candidate");
 
-            var allApplicants = await _repositoryManager.ApplicationRepository.GetAllCandidateApplicationsByJobIdAsync(jobId);
+        //    var allApplicants = await _repositoryManager.ApplicationRepository.GetAllCandidateApplicationsByJobIdAsync(jobId);
 
-            var availableUser = new List<User>();
-            foreach (var user in allUser)
-            {
-                var find = allApplicants.Where(a => a.UserId == user.Id).FirstOrDefault();
-                if (find == null && !user.IsWorking && user.DeletedAt == null)
-                    availableUser.Add(user);
+        //    var availableUser = new List<User>();
+        //    foreach (var user in allUser)
+        //    {
+        //        var find = allApplicants.Where(a => a.UserId == user.Id).FirstOrDefault();
+        //        if (find == null && !user.IsWorking && user.DeletedAt == null)
+        //            availableUser.Add(user);
 
-            }
-            return availableUser;
+        //    }
+        //    return availableUser;
 
-        }
+        //}
 
 
         //TODO FINISH for changing password
@@ -477,105 +477,105 @@ namespace SystemDuo.Core.Services
             return new GeneralResponse { IsSuccess = false, Message = "Something went wrong." };
         }
 
-        public async Task<IEnumerable<User>> GetCandidatesByCategoryAsync(Category cat)
-        {
-            var candidates = new List<User>();
-            var users = await _userManager.GetUsersInRoleAsync("Candidate");
-            foreach (var item in users)
-            {
-                if (item.Category == cat && item.DeletedAt == null && !item.IsWorking)
-                {
-                    candidates.Add(item);
-                }
-            }
-            return candidates;
-        }
+        //public async Task<IEnumerable<User>> GetCandidatesByCategoryAsync(Category cat)
+        //{
+        //    var candidates = new List<User>();
+        //    var users = await _userManager.GetUsersInRoleAsync("Candidate");
+        //    foreach (var item in users)
+        //    {
+        //        if (item.Category == cat && item.DeletedAt == null && !item.IsWorking)
+        //        {
+        //            candidates.Add(item);
+        //        }
+        //    }
+        //    return candidates;
+        //}
 
-        public async Task<IEnumerable<User>> GetCandidatesByTermAsync(Category cat, bool ltc, bool stc)
-        {
-            var candidates = new List<User>();
-            var users = await _userManager.GetUsersInRoleAsync("Candidate");
+        //public async Task<IEnumerable<User>> GetCandidatesByTermAsync(Category cat, bool ltc, bool stc)
+        //{
+        //    var candidates = new List<User>();
+        //    var users = await _userManager.GetUsersInRoleAsync("Candidate");
 
-            if (ltc == true && stc == true)
-            {
-                if (cat.Name == null || cat.Name == "Show All")
-                {
-                    foreach (var item in users.Where(x => x.LongTerm == true && x.ShortTerm == true && x.DeletedAt == null && !x.IsWorking))
-                    {
-                        candidates.Add(item);
-                    }
-                }
-                else
-                {
-                    foreach (var item in users.Where(x => x.LongTerm == true && x.ShortTerm == true && x.Category == cat && x.DeletedAt == null && !x.IsWorking))
-                    {
-                        candidates.Add(item);
-                    }
-                }
+        //    if (ltc == true && stc == true)
+        //    {
+        //        if (cat.Name == null || cat.Name == "Show All")
+        //        {
+        //            foreach (var item in users.Where(x => x.LongTerm == true && x.ShortTerm == true && x.DeletedAt == null && !x.IsWorking))
+        //            {
+        //                candidates.Add(item);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in users.Where(x => x.LongTerm == true && x.ShortTerm == true && x.Category == cat && x.DeletedAt == null && !x.IsWorking))
+        //            {
+        //                candidates.Add(item);
+        //            }
+        //        }
 
-            }
+        //    }
 
-            if (ltc == true && stc == false)
-            {
-                if (cat.Name == null || cat.Name == "Show All")
-                {
-                    foreach (var item in users.Where(x => x.LongTerm == true && x.DeletedAt == null && !x.IsWorking))
-                    {
-                        candidates.Add(item);
-                    }
-                }
-                else
-                {
-                    foreach (var item in users.Where(x => x.LongTerm == true && x.Category == cat && x.DeletedAt == null && !x.IsWorking))
-                    {
-                        candidates.Add(item);
-                    }
-                }
+        //    if (ltc == true && stc == false)
+        //    {
+        //        if (cat.Name == null || cat.Name == "Show All")
+        //        {
+        //            foreach (var item in users.Where(x => x.LongTerm == true && x.DeletedAt == null && !x.IsWorking))
+        //            {
+        //                candidates.Add(item);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in users.Where(x => x.LongTerm == true && x.Category == cat && x.DeletedAt == null && !x.IsWorking))
+        //            {
+        //                candidates.Add(item);
+        //            }
+        //        }
 
-            }
+        //    }
 
-            if (ltc == false && stc == true)
-            {
-                if (cat.Name == null || cat.Name == "Show All")
-                {
-                    foreach (var item in users.Where(x => x.ShortTerm == true && x.DeletedAt == null && !x.IsWorking))
-                    {
-                        candidates.Add(item);
-                    }
-                }
-                else
-                {
-                    foreach (var item in users.Where(x => x.ShortTerm == true && x.Category == cat && x.DeletedAt == null && !x.IsWorking))
-                    {
-                        candidates.Add(item);
-                    }
-                }
+        //    if (ltc == false && stc == true)
+        //    {
+        //        if (cat.Name == null || cat.Name == "Show All")
+        //        {
+        //            foreach (var item in users.Where(x => x.ShortTerm == true && x.DeletedAt == null && !x.IsWorking))
+        //            {
+        //                candidates.Add(item);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in users.Where(x => x.ShortTerm == true && x.Category == cat && x.DeletedAt == null && !x.IsWorking))
+        //            {
+        //                candidates.Add(item);
+        //            }
+        //        }
 
-            }
+        //    }
 
-            if (ltc == false && stc == false)
-            {
-                if (cat.Name == null || cat.Name == "Show All")
-                {
-                    foreach (var item in users)
-                    {
-                        if (item.DeletedAt == null && !item.IsWorking)
-                            candidates.Add(item);
-                    }
-                }
-                else
-                {
-                    foreach (var item in users.Where(x => x.Category == cat))
-                    {
-                        if (item.DeletedAt == null && !item.IsWorking)
-                            candidates.Add(item);
-                    }
-                }
+        //    if (ltc == false && stc == false)
+        //    {
+        //        if (cat.Name == null || cat.Name == "Show All")
+        //        {
+        //            foreach (var item in users)
+        //            {
+        //                if (item.DeletedAt == null && !item.IsWorking)
+        //                    candidates.Add(item);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in users.Where(x => x.Category == cat))
+        //            {
+        //                if (item.DeletedAt == null && !item.IsWorking)
+        //                    candidates.Add(item);
+        //            }
+        //        }
 
-            }
+        //    }
 
-            return candidates;
+        //    return candidates;
 
-        }
+        //}
     }
 }

@@ -5,43 +5,34 @@ namespace SystemDuo.Core.Persistence.Repositories
     public class RepositoryManager:IRepositoryManager
     {
         private readonly Lazy<IUnitOfWork> _lazyUnitOfWork;
-        private readonly Lazy<IJobRepository> _lazyJobRepository;
-        private readonly Lazy<ICompanyRepository> _lazyCompanyRepository;
-        private readonly Lazy<ISkillsRepository> _lazySkillsRepository;
-        private readonly Lazy<IJobSkillsRepository> _lazyJobsSkillsRepository;
-        private readonly Lazy<IJobCategoryRepository> _lazyJobsCategoryRepository;
-        private readonly Lazy<IApplicationRepository> _lazyApplicationRepository;
-        private readonly Lazy<IApplicationCommentsRepository> _lazyApplicationCommentsRepository;
-        private readonly Lazy<IEmployeeRepository> _lazyEmployeeRepository;
-        private readonly Lazy<IJobLocationRepository> _lazyJobLocationRepository;
-        private readonly Lazy<IEmployeeJobRepository> _lazyEmployeeJobRepository;
-        private readonly Lazy<IUserCalendarRepository> _lazyUserCalendarRepository;
+        private readonly Lazy<ILinkAttributeRepository> _linkAttributeRepository;
+        private readonly Lazy<IWebmasterRepository> _webmasterRepository;
+        private readonly Lazy<ITodoRepository> _todoRepository;
+        private readonly Lazy<IDomainRepository> _domainRepository;
+        private readonly Lazy<IClientRepository> _clientRepository;
+        private readonly Lazy<IClientTypeRepository> _clientTypeRepository;
+        private readonly Lazy<IStatusRepository> _statusRepository;
+        private readonly Lazy<ILinkTypeRepository> _linkTypeRepository;
         public RepositoryManager(RepositoryDbContext dbContext)
         {
             _lazyUnitOfWork = new Lazy<IUnitOfWork>(() => new UnitOfWork(dbContext));
-            _lazyJobRepository = new Lazy<IJobRepository>(() => new JobRepository(dbContext));
-            _lazyCompanyRepository = new Lazy<ICompanyRepository>(() => new CompanyRepository(dbContext));
-            _lazySkillsRepository = new Lazy<ISkillsRepository>(() => new SkillsRepository(dbContext));
-            _lazyJobsSkillsRepository = new Lazy<IJobSkillsRepository>(() => new JobSkillsRepository(dbContext));
-            _lazyJobsCategoryRepository = new Lazy<IJobCategoryRepository>(() => new JobCategoryRepository(dbContext));
-            _lazyApplicationRepository = new Lazy<IApplicationRepository>(() => new ApplicationRepository(dbContext));
-            _lazyEmployeeRepository = new Lazy<IEmployeeRepository>(() => new EmployeeRepository(dbContext));
-            _lazyJobLocationRepository = new Lazy<IJobLocationRepository>(() => new JobLocationRepository(dbContext));
-            _lazyApplicationCommentsRepository = new Lazy<IApplicationCommentsRepository>(() => new ApplicationCommentsRepository(dbContext));
-            _lazyEmployeeJobRepository = new Lazy<IEmployeeJobRepository>(() => new EmployeeJobRepository(dbContext));
-            _lazyUserCalendarRepository = new Lazy<IUserCalendarRepository>(() => new UserCalendarRepository(dbContext));
+            _linkAttributeRepository = new Lazy<ILinkAttributeRepository>(() => new LinkAttributeRepository(dbContext));
+            _webmasterRepository = new Lazy<IWebmasterRepository>(() => new WebmasterRepository(dbContext));
+            _todoRepository = new Lazy<ITodoRepository>(() => new TodoRepository(dbContext));
+            _domainRepository = new Lazy<IDomainRepository>(() => new DomainRepository(dbContext));
+            _clientRepository = new Lazy<IClientRepository>(() => new ClientRepository(dbContext));
+            _clientTypeRepository = new Lazy<IClientTypeRepository>(() => new ClientTypeRepository(dbContext));
+            _statusRepository = new Lazy<IStatusRepository>(() => new StatusRepository(dbContext));
+            _linkTypeRepository = new Lazy<ILinkTypeRepository>(() => new LinkTypeRepository(dbContext));
         }
         public IUnitOfWork UnitOfWork => _lazyUnitOfWork.Value;
-        public IJobRepository JobsRepository => _lazyJobRepository.Value;
-        public ICompanyRepository CompanyRepository => _lazyCompanyRepository.Value;
-        public ISkillsRepository SkillsRepository => _lazySkillsRepository.Value;
-        public IJobSkillsRepository JobsSkillsRepository => _lazyJobsSkillsRepository.Value;
-        public IJobCategoryRepository JobsCategoryRepository => _lazyJobsCategoryRepository.Value;
-        public IApplicationRepository ApplicationRepository => _lazyApplicationRepository.Value;
-        public IApplicationCommentsRepository ApplicationCommentsRepository => _lazyApplicationCommentsRepository.Value;
-        public IEmployeeRepository EmployeeRepository => _lazyEmployeeRepository.Value;
-        public IEmployeeJobRepository EmployeeJobRepository => _lazyEmployeeJobRepository.Value;
-        public IJobLocationRepository JobLocationRepository => _lazyJobLocationRepository.Value;
-        public IUserCalendarRepository UserCalendarRepository => _lazyUserCalendarRepository.Value;
+        public ILinkAttributeRepository LinkAttributeRepository => _linkAttributeRepository.Value;
+        public IWebmasterRepository WebmasterRepository => _webmasterRepository.Value;
+        public ITodoRepository TodoRepository => _todoRepository.Value;
+        public IDomainRepository DomainRepository => _domainRepository.Value;
+        public IClientRepository ClientRepository => _clientRepository.Value;
+        public IClientTypeRepository ClientTypeRepository => _clientTypeRepository.Value;
+        public IStatusRepository StatusRepository => _statusRepository.Value;
+        public ILinkTypeRepository LinkTypeRepository => _linkTypeRepository.Value;
     }
 }

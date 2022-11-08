@@ -41,30 +41,47 @@ namespace SystemDuo.Core.Persistence
                 .HasForeignKey(p => p.RoleId);
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new SkillsConfiguration());
-            modelBuilder.ApplyConfiguration(new CompanyConfiguration());
-            modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            //modelBuilder.ApplyConfiguration(new SkillsConfiguration());
+            //modelBuilder.ApplyConfiguration(new CompanyConfiguration());
+            //modelBuilder.ApplyConfiguration(new LocationConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
+
+            modelBuilder.ApplyConfiguration(new StatusConfiguration());
+            modelBuilder.ApplyConfiguration(new LinkAttributeConfiguration());
+            modelBuilder.ApplyConfiguration(new LinkTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new WebmasterConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientConfiguration());
+            modelBuilder.ApplyConfiguration(new DomainConfiguration());
 
 
 
         }
-        
-        public DbSet<Job>? Jobs { get; set; }
-        public DbSet<Category>? Categories { get; set; }
-        public DbSet<Location>? Locations { get; set; }
-        public DbSet<Skills>? Skills { get; set; }
-        public DbSet<Company>? Companies { get; set; }
-        public DbSet<Application>? Applications { get; set; }
-        public DbSet<Documents>? Documents { get; set; }
-        public DbSet<ApplicantSkills>? CandidateSkills { get; set; }
-        public DbSet<JobSkills>? JobsSkills { get; set; }
-        public DbSet<Employee>? Employees { get; set; }
-        public DbSet<EmployeeJob>? EmployeeJobs { get; set; }
-        public DbSet<EmployeeRecension>? EmployeeRecensions { get; set; }
-        public DbSet<ApplicationComments>? ApplicationComments { get; set; }    
-        public DbSet<UserCalendar>? UserCalendars { get; set; }    
-     }
+
+        //public DbSet<Job>? Jobs { get; set; }
+        //public DbSet<Category>? Categories { get; set; }
+        //public DbSet<Location>? Locations { get; set; }
+        //public DbSet<Skills>? Skills { get; set; }
+        //public DbSet<Company>? Companies { get; set; }
+        //public DbSet<Application>? Applications { get; set; }
+        //public DbSet<Documents>? Documents { get; set; }
+        //public DbSet<ApplicantSkills>? CandidateSkills { get; set; }
+        //public DbSet<JobSkills>? JobsSkills { get; set; }
+        //public DbSet<Employee>? Employees { get; set; }
+        //public DbSet<EmployeeJob>? EmployeeJobs { get; set; }
+        //public DbSet<EmployeeRecension>? EmployeeRecensions { get; set; }
+        //public DbSet<ApplicationComments>? ApplicationComments { get; set; }    
+        //public DbSet<UserCalendar>? UserCalendars { get; set; }    
+        public DbSet<ClientDomain>? Domains { get; set; }
+        public DbSet<Client>? Clients { get; set; }
+        public DbSet<ClientType>? ClientTypes { get; set; }
+        public DbSet<Link>? Links { get; set; }
+        public DbSet<LinkAttribute>? LinkAttributes { get; set; }
+        public DbSet<LinkType>? LinkTypes { get; set; }
+        public DbSet<Status>? Statuses { get; set; }
+        public DbSet<Todo>? Todos { get; set; }
+        public DbSet<Webmaster>? Webmasters { get; set; }
+    }
 }
