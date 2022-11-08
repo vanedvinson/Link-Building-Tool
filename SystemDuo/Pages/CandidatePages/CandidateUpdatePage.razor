@@ -1,7 +1,0 @@
-﻿@page "/candidate/update/{candidateId}"
-@attribute [Authorize]
-<CandidateFormComponent candidateId="@candidateId"></CandidateFormComponent>
-
-@code {
-  [Parameter] public string candidateId { get; set;  }
-}

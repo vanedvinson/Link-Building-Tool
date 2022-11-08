@@ -1,7 +1,0 @@
-﻿@page "/update/job/{jobId:guid}"
-@attribute [Authorize]
-<SystemDuo.Components.JobsComponent.JobsFormComponent jobId=@jobId></SystemDuo.Components.JobsComponent.JobsFormComponent>
-
-@code {
-  [Parameter] public Guid jobId { get; set;  }
-}
