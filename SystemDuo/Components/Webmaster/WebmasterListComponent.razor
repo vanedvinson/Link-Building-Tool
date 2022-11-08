@@ -1,0 +1,67 @@
+﻿@inherits WebmasterListViewModel
+
+<MudGrid Spacing="2">
+    <MudItem xs="6">
+        <MudText Typo="Typo.h5">Webmasters</MudText>
+    </MudItem>
+    <MudItem xs="6" Class="d-flex align-center justify-content-end">
+        <MudButton 
+            Variant="Variant.Filled"
+            StartIcon="@Icons.Outlined.AddCircleOutline"
+            Color="Color.Primary"
+            @onclick="@(() => NavigateToCreateCompanyPage())">
+            Add Webmaster
+        </MudButton>
+    </MudItem>
+</MudGrid>
+
+    
+<MudTable Dense=true
+          Class="m-4"
+          Items="@Webmasters"
+          Hover="true"
+          Bordered="false"
+          Elevation="4">
+    <ColGroup>
+        <col/>
+        <col/>
+        <col/>
+        <col/>
+        <col style="width:35%;" />
+
+        <col style="width:10px;"/>
+        <col style="width:10px;" />
+    </ColGroup>
+
+    <HeaderContent>
+        <MudTh>Name and Surname</MudTh>
+        <MudTh>Phone</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Social media</MudTh>
+        <MudTh>Note</MudTh>
+
+        <MudTh></MudTh>
+        <MudTh></MudTh>
+    </HeaderContent>
+
+    <RowTemplate>
+        <MudTd>@context.Name @context.Lastname</MudTd>
+        <MudTd>@context.Phone</MudTd>
+        <MudTd>@context.Email</MudTd>
+        <MudTd>@context.SocialMediaUrl</MudTd>
+        <MudTd>@context.Note</MudTd>
+
+        <MudTd>
+            <MudIconButton 
+                Icon="@Icons.Material.Filled.Delete"
+                OnClick="@(()=>DeleteWebmaster(@context.Id))">
+            </MudIconButton>
+        </MudTd>
+        <MudTd>
+            <MudIconButton 
+                Icon="@Icons.Filled.EditNote"
+                OnClick="@(()=>NavigateToUpdateCompanyPage(@context.Id))">
+            </MudIconButton>
+         </MudTd>
+    </RowTemplate>
+</MudTable>

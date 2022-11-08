@@ -1,0 +1,118 @@
+﻿@inherits DashboardViewModel
+@using SystemDuo.Core.Domain.Entities
+
+<MudGrid Spacing="2">
+    <MudItem xs="6">
+        <MudText Typo="Typo.h5">Tasks</MudText>
+    </MudItem>
+    <MudItem xs="6" Class="d-flex align-center justify-content-end">
+        <MudButton 
+            Variant="Variant.Filled"
+            StartIcon="@Icons.Outlined.AddCircleOutline"
+            Color="Color.Primary"
+            @onclick="@(() => NavigateToCreateTaskPage())"
+            >
+            Create Task
+        </MudButton>
+    </MudItem>
+</MudGrid>
+
+<div class="m-4"></div>
+
+<MudTable Dense=true
+          Class="m-4"
+          Items="@Todos"
+          Hover="true"
+          Bordered="false"
+          Elevation="4"
+          FixedHeader="true">
+
+          <ColGroup>
+              <col/>
+              <col style="width: 200px;" />
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+              <col/>
+          </ColGroup>
+          <HeaderContent>
+              <MudTh Class="py-2">Title</MudTh>
+              <MudTh>Status</MudTh>
+              <MudTh></MudTh>
+              <MudTh>Link Attribute</MudTh>
+              <MudTh>Link Type</MudTh>
+              <MudTh>Amount</MudTh>
+              <MudTh>Price</MudTh>
+              <MudTh></MudTh>
+              <MudTh>Domain</MudTh>
+              <MudTh>Client</MudTh>
+              <MudTh></MudTh>
+              <MudTh></MudTh>
+              <MudTh></MudTh>
+          </HeaderContent>
+          <RowTemplate>
+              <MudTd>@context.Title</MudTd>
+              <MudTd>
+                <MudSelect 
+                    T="Status" 
+                    @bind-value="@context.Status"
+                    SelectedValuesChanged="@(() => ChangeStatus(context))"
+                    
+                    Variant="Variant.Outlined" 
+                    AnchorOrigin="Origin.BottomCenter">
+                    @foreach (var item in Statuses.Where(x => x.Group == context.StatusGroup))
+                    {
+                        <MudSelectItem Value="@item">@item.Name</MudSelectItem>
+                    }
+                </MudSelect>
+              </MudTd>
+              <MudTd>
+                 <MudIconButton 
+                     @onclick="@(() => ApproveStatus(context))"
+                     Icon="@Icons.Filled.Check" 
+                     Variant="Variant.Filled" 
+                     Color="Color.Primary" 
+                     Size="Size.Small" />
+              </MudTd>
+              <MudTd>@context.LinkAttribute!.Name</MudTd>
+              <MudTd>@context.LinkType!.Name</MudTd>
+              <MudTd></MudTd>
+              <MudTd>@context.Price€ @if (context.ApprovePrice == true) { <span> - Approved</span> } </MudTd>
+              <MudTd>
+                <MudIconButton 
+                    Icon="@Icons.Filled.Check" 
+                    Variant="Variant.Filled" 
+                    Color="Color.Primary" 
+                    Size="Size.Small"
+                    OnClick="@(()=>ApprovePrice(context))" />
+              </MudTd>
+              <MudTd>@context.Domain!.Name</MudTd>
+              <MudTd>@context.Client!.Name</MudTd>
+              <MudTd></MudTd>
+              <MudTd>
+                <MudButton Variant="Variant.Filled"
+                           EndIcon="@Icons.Filled.ArrowRightAlt"
+                           Color="Color.Primary"
+                           OnClick="@(()=>NavigateToTaskOverviewPage(context.Id))">
+                    View
+                </MudButton>
+              </MudTd>
+              <MudTd>
+                  <MudIconButton 
+                      Icon="@Icons.Outlined.EditNote" 
+                      Variant="Variant.Filled" 
+                      Color="Color.Primary" 
+                      Size="Size.Small"
+                      OnClick="@(()=>NavigateToTaskEditPage(context.Id))" />
+              </MudTd>
+          </RowTemplate>
+
+</MudTable>
+

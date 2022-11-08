@@ -1,4 +1,4 @@
-﻿@inherits CandidateCreateViewModel
+﻿@*@inherits CandidateCreateViewModel
 
 
 <MudToolBar>
@@ -45,22 +45,7 @@
              <MudCheckBox  @bind-Checked="@Candidate.LongTerm" Label="Long Term"></MudCheckBox>
              <MudCheckBox @bind-Checked="@Candidate.ShortTerm" Label="Short Term"></MudCheckBox>
              
-         @*      <MudSelect T="Skills" MultiSelection="true" SelectAll="true" Label="Skills" SelectAllText="Select all skills" @bind-SelectedValues="@SelectedSkills" >
-                @foreach(var d in Skills)
-                    {
-                <MudSelectItem Value="@d"/>
-                     }
-             
-             </MudSelect>*@
-             
-                                                          
-           @*    <MudSelect T="string" MultiSelection="true"  Label="Roles"  @bind-SelectedValues="@SelectedRoles" >
-                        @foreach(var ar in Roles)
-                            {
-                                <MudSelectItem Value="@ar.Name"/>
-                             }
-             
-             </MudSelect> *@   
+        
             
               <MudCardActions>
                     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">@ButtonText</MudButton>
@@ -83,25 +68,7 @@
                 <MudSelectItem Value=@("Bachelor Degree") />
                 <MudSelectItem Value=@("Master Degree") />
             </MudSelect>
-@*            <div class="d-flex align-items-center border-bottom w-50">
 
-                <MudText Style="width:75px"> Germany: </MudText>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A1" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A2" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B1" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B2" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C1" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C2" Color="Color.Primary"></MudCheckBox>
-            </div>
-            <div class="d-flex align-items-center">
-                <MudText Style="width:75px"> English: </MudText>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A1" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A2" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B1" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B2" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C1" Color="Color.Primary"></MudCheckBox>
-                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C2" Color="Color.Primary"></MudCheckBox>
-            </div>*@
            
             <MudText Class="fw-bold mt-2">Languages</MudText>
             <MudSelect Class="mt-0" T="string" MultiSelection="true" @bind-SelectedValues="@SelectedLanguages" Variant="Variant.Outlined" Placeholder="Languages">
@@ -132,3 +99,4 @@
     </MudGrid>
 </EditForm>
        
+*@

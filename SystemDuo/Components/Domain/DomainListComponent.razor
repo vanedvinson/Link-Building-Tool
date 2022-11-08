@@ -1,0 +1,80 @@
+﻿@inherits DomainListViewModel
+
+<MudGrid Spacing="2">
+    <MudItem xs="6">
+        <MudText Typo="Typo.h5">Domains</MudText>
+    </MudItem>
+    <MudItem xs="6" Class="d-flex align-center justify-content-end">
+        <MudButton Variant="Variant.Filled"
+                   StartIcon="@Icons.Outlined.AddCircleOutline"
+                   Color="Color.Primary"
+                   @onclick="@(() => NavigateToCreateDomainPage())">
+            New Domain
+        </MudButton>
+    </MudItem>
+</MudGrid>
+
+@if(Domains != null){
+<MudTable Dense=true
+          Class="m-4"
+          Items="@Domains"
+          Hover="true"
+          Bordered="false"
+          Elevation="4">
+    <ColGroup>
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+
+        <col style="width:10px;" />
+        <col style="width:10px;" />
+    </ColGroup>
+
+    <HeaderContent>
+        <MudTh>Title</MudTh>
+        <MudTh>Theme</MudTh>
+        <MudTh>Webmaster</MudTh>
+        <MudTh>Webmaster Email</MudTh>
+        <MudTh>Webmaster Phone</MudTh>
+
+        <MudTh></MudTh>
+        <MudTh></MudTh>
+    </HeaderContent>
+
+    <RowTemplate>
+        <MudTd>@context.Name</MudTd>
+        <MudTd>@context.Theme</MudTd>
+        <MudTd>
+            @if (context.Webmaster != null) 
+            { 
+                @context.Webmaster.Name @context.Webmaster.Lastname
+            } 
+        </MudTd>
+        <MudTd>
+            @if (context.Webmaster != null)
+            {
+                @context.Webmaster.Email
+            }
+        </MudTd>
+        <MudTd>
+            @if (context.Webmaster != null)
+            {
+                @context.Webmaster.Phone
+            }
+        </MudTd>
+
+        <MudTd>
+            <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                           OnClick="@(()=>DeleteDomain(@context.Id))">
+            </MudIconButton>
+        </MudTd>
+        <MudTd>
+            <MudIconButton Icon="@Icons.Filled.EditNote"
+                           OnClick="@(()=>NavigateToUpdateCompanyPage(@context.Id))">
+            </MudIconButton>
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+}

@@ -1,0 +1,50 @@
+﻿@inherits WebmasterCreateUpdateViewModel
+
+<MudText Typo="Typo.h5">Create Webmaster</MudText>
+<MudSpacer />
+
+<EditForm
+    Model="@Webmaster"
+    OnValidSubmit="@(() => CreateOrUpdateWebmaster())">
+    <MudCard
+        Class="m-4"
+        Elevation="0">
+        <MudCardContent>
+            <MudTextField 
+                    Variant="Variant.Outlined"
+                    Label="First Name"
+                    @bind-Value="Webmaster.Name"
+                    For="@(()=> Webmaster.Name)"/>
+            <MudTextField Variant="Variant.Outlined"
+                    Label="Last Name"
+                    @bind-Value="Webmaster.Lastname"
+                    For="@(()=> Webmaster.Lastname)" />
+            <MudTextField Variant="Variant.Outlined"
+                    Label="Phone"
+                    @bind-Value="Webmaster.Phone"
+                    For="@(()=> Webmaster.Phone)" />
+            <MudTextField Variant="Variant.Outlined"
+                    Label="E-Mail"
+                    @bind-Value="Webmaster.Email"
+                    For="@(()=> Webmaster.Email)" />
+            <MudTextField Variant="Variant.Outlined"
+                    Label="Social Media URL"
+                    @bind-Value="Webmaster.SocialMediaUrl"
+                    For="@(()=> Webmaster.SocialMediaUrl)" />
+            <MudTextField Variant="Variant.Outlined"
+                    Label="Note"
+                    Lines="3"
+                    @bind-Value="Webmaster.Note"
+                    For="@(()=> Webmaster.Note)" />
+            <MudCardActions>
+                <MudButton 
+                    ButtonType="ButtonType.Submit" 
+                    Variant="Variant.Filled" 
+                    Color="Color.Primary" 
+                    Class="ml-auto">
+                    Save
+                </MudButton>
+            </MudCardActions>
+        </MudCardContent>
+    </MudCard>
+</EditForm>

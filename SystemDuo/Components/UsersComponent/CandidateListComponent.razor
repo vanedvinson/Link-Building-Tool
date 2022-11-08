@@ -1,4 +1,4 @@
-﻿@inherits CandidateViewModel
+﻿@*@inherits CandidateViewModel
 
 <MudTabs>
     <MudTabPanel Text="Unemployeed" OnClick="(()=>GetAllCandidates(false))">
@@ -113,8 +113,7 @@
                             <MudTable Items="@context.EmployeeJob" Context="ItemsContext" Hover="true" Bordered="true" Breakpoint="Breakpoint.Sm" Elevation="2" Filter="new Func<EmployeeJob,bool>(FilterFunc2)" Style="border: 1px solid var(--mud-palette-table-lines)!important;">
                                 <ToolBarContent>
 
-                                @*    <MudButton StartIcon="@Icons.Material.Filled.Add" Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" Class="ma-2"  >
-                                        New job position  </MudButton>*@
+                                
                                     <MudSpacer />
                                     <MudSpacer />
                                     <MudSpacer />
@@ -362,3 +361,4 @@
     </MudTabPanel>
 </MudTabs>
 
+*@

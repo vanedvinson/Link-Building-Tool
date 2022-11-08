@@ -1,0 +1,20 @@
+﻿@inherits TodoOverviewViewModel
+
+@if(Todo != null){
+    <p>Title: @Todo.Title</p>
+    <p>Status: @if(Todo.Status != null) @Todo.Status.Name </p>
+    <p>Link: </p>
+    <p>Link Attribute: @if (Todo.LinkAttribute != null) @Todo.LinkAttribute!.Name </p>
+    <p>Link Type: @if(Todo.LinkType != null) @Todo.LinkType!.Name</p>
+    <p>Theme: @Todo.Theme</p>
+    <p>Link Target: @Todo.LinkTarget</p>
+    <p>Anchor Text: @Todo.AnchorText</p>
+    <p>Budget Amount: @Todo.BudgetAmount</p>
+    <p>Link Amount: @Todo.LinkAmount</p>
+    <p>Note: @Todo.Note</p>
+    <p>Price: @Todo.Price</p>
+    <p>Text Link: @Todo.TextLink</p>
+    <p>Reason for finshed: @Todo.ReasonForFinished</p>
+    <p>Domain: @if(Todo.Domain != null) @Todo.Domain!.Name </p>
+    <p>Client: @if (Todo.Client != null) @Todo.Client!.Name </p>
+}
