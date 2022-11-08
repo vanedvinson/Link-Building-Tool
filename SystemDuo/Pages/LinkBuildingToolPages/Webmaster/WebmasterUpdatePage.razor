@@ -1,0 +1,8 @@
+﻿@page "/webmasters/update/{webmasterId:guid}"
+
+<LinkBuildingTool.Components.Webmaster.WebmasterFormComponent webmasterId="@webmasterId"></LinkBuildingTool.Components.Webmaster.WebmasterFormComponent>
+
+
+@code{
+    [Parameter] public Guid webmasterId { get; set; }
+}

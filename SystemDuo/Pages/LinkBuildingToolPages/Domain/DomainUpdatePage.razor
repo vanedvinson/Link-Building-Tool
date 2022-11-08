@@ -1,0 +1,8 @@
+﻿@page "/domains/update/{domainId:guid}"
+
+<LinkBuildingTool.Components.Domain.DomainFormComponent domainId="@domainId"></LinkBuildingTool.Components.Domain.DomainFormComponent>
+
+
+@code {
+    [Parameter] public Guid domainId { get; set; }
+}

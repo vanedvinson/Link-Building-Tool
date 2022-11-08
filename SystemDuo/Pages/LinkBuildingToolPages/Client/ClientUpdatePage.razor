@@ -1,0 +1,8 @@
+﻿@page "/clients/update/{clientId:guid}"
+
+
+<LinkBuildingTool.Components.Client.ClientFormComponent clientId="@clientId"></LinkBuildingTool.Components.Client.ClientFormComponent>
+
+@code {
+    [Parameter] public Guid clientId { get; set; }
+}

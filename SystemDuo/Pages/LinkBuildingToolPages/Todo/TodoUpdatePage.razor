@@ -1,0 +1,7 @@
+﻿@page "/task/update/{taskId:guid}"
+
+<LinkBuildingTool.Components.Todo.TodoFormComponent todoId="taskId"></LinkBuildingTool.Components.Todo.TodoFormComponent>
+
+@code {
+    [Parameter] public Guid taskId { get; set; }
+}

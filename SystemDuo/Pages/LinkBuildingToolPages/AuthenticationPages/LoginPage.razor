@@ -1,5 +1,5 @@
-﻿
-@page "/ttttttt"
+﻿@page "/"
+@using SystemDuo.Core.Domain.Entities
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
@@ -21,17 +21,17 @@
             <MudImage Src="images/logo.png" Alt="Logo" Elevation="0" />
         </MudPaper>
         <MudPaper Style="border-radius:30px;" Elevation="0">
-            <EditForm Model="_userForAuthentication"  OnValidSubmit="ExecuteLogin"  style="align-items:center; display:flex; flex-direction:column;">
-            <DataAnnotationsValidator />
+            <EditForm Model="_userForAuthentication" OnValidSubmit="ExecuteLogin" style="align-items:center; display:flex; flex-direction:column;">
+                <DataAnnotationsValidator />
                 <div Style="width:400px;margin:15px" class="wrap-login100" Elevation="0">
-                <div>
-                    <div style="padding:16px">
-                        <MudText Typo="Typo.h6">Login</MudText>
+                    <div>
+                        <div style="padding:16px">
+                            <MudText Typo="Typo.h6">Login</MudText>
+                        </div>
                     </div>
-                </div>
                     <div Style="padding-left: 16px;padding-right: 16px;">
                         <p style="padding-top:16px; margin:0px; font-weight:bold">Email / Username</p>
-                        <MudTextField  Style="border-radius: 45px;" Variant="Variant.Outlined" Class="rounded-xl" Placeholder="E-Mail..." @bind-Value="_userForAuthentication.Email" For="@(() => _userForAuthentication.Email)" />
+                        <MudTextField Style="border-radius: 45px;" Variant="Variant.Outlined" Class="rounded-xl" Placeholder="E-Mail..." @bind-Value="_userForAuthentication.Email" For="@(() => _userForAuthentication.Email)" />
                         <p style="padding-top:16px;margin:0px;font-weight:bold">Password</p>
                         <MudTextField Variant="Variant.Outlined" Placeholder="Password..."
                                       @bind-Value="_userForAuthentication.Password" For="@(() => _userForAuthentication.Password)" InputType="InputType.Password" />
@@ -40,17 +40,17 @@
                     </div>
                     <MudCardActions Style="display:flex; flex-direction:column;padding:16px">
                         <MudButton @onclick="ExecuteLogin" Style="width: 100%;" Variant="Variant.Filled" Color="Color.Primary" FullWidth="true">Log In ></MudButton>
-                     </MudCardActions>
+                    </MudCardActions>
                 </div>
 
             </EditForm>
         </MudPaper>
     </MudStack>
 </MudPaper>
- 
 
 
-@code{
+
+@code {
     private LoginDto _userForAuthentication = new LoginDto();
     public bool ShowAuthError { get; set; }
     public string? Error { get; set; }
@@ -62,13 +62,13 @@
 
         if (login.IsAuthenticated)
         {
-            await tokenStorage!.SetTokensAsync(login.AccessToken,login.RefreshToken);
+            await tokenStorage!.SetTokensAsync(login.AccessToken, login.RefreshToken);
             await storage!.SetAsync("Name", login.Name);
             await storage!.SetAsync("Surname", login.Surname);
             navigationManager!.NavigateTo("/dashboard", true);
-                }
-          
-     }  
+        }
+
+    }
     public void OpenForgotPasswordPage()
     {
         navigationManager.NavigateTo("forgot-password");
@@ -77,7 +77,7 @@
     public class UserForAuthenticationDto
     {
         public string Email { get; set; }
-        public string Password{ get; set; }
+        public string Password { get; set; }
 
     }
 }
