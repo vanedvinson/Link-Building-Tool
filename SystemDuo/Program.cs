@@ -19,7 +19,6 @@ using SystemDuo.Core.Services.Abstractions;
 using SystemDuo.Data;
 using SystemDuo.Helpers;
 using SystemDuo.ViewModels;
-using SystemDuo.ViewModels.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,11 +27,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 26));
 builder.Services.AddDbContext<RepositoryDbContext>(options =>
 {
-    options.UseNpgsql(connectionString);
-    //options.UseMySql("Server = localhost; Port = 3306; Initial Catalog = systemduo; User Id = root; Password = ", serverVersion, mysqlOptions =>
-    //{
-    //    mysqlOptions.EnableRetryOnFailure(1, TimeSpan.FromSeconds(5), null);
-    //});
+    //options.UseNpgsql(connectionString);
+    options.UseMySql(connectionString, serverVersion, mysqlOptions =>
+    {
+        mysqlOptions.EnableRetryOnFailure(1, TimeSpan.FromSeconds(5), null);
+    });
 });
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
