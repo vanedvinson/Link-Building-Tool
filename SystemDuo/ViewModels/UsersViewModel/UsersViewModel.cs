@@ -6,7 +6,6 @@ using SystemDuo.Core.Domain.Entities;
 using SystemDuo.Core.Dto;
 using SystemDuo.Core.Services.Abstractions;
 using SystemDuo.Helpers;
-using SystemDuo.ViewModels.Interfaces;
 
 namespace SystemDuo.ViewModels
 {
