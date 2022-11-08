@@ -1,0 +1,57 @@
+﻿@inherits UserCalendarViewModel
+
+<MudGrid>
+
+    <MudItem xs="12">
+        <EditForm Model="UserCalendar" OnValidSubmit="CreateUserCalendar">
+            <DataAnnotationsValidator />
+            <p style="margin:0px;">Date:</p>
+            <MudDatePicker Variant="Variant.Outlined" Placeholder="Date" Editable=true @bind-Date="UserCalendar.Date" For="@(()=>UserCalendar.Date)" Required></MudDatePicker>
+            <p style="margin:0px;">Note:</p>
+            <MudTextField Variant="Variant.Outlined" T="string" Placeholder="Note" Immediate=true @bind-Value="@UserCalendar.Note" Required />
+            <MudButton Class="mt-2" style="float: right;" Variant="Variant.Filled" Disabled=@IsDisabled ButtonType=ButtonType.Submit Color="Color.Primary">NEW REMINDER</MudButton>
+        </EditForm>
+    </MudItem>
+    <MudItem xs="12">
+        <MudTable Class="m-2 " Dense=true Items="@UserCalendars"  Hover="true" Bordered="false" Breakpoint="Breakpoint.Sm" Elevation="0" >
+            <ToolBarContent>
+
+                <MudText Typo="Typo.h5">Reminders</MudText>
+            </ToolBarContent>
+
+        
+            <ColGroup>
+                <col  />
+                <col  />
+                <col style="width: 1px;"/>
+                <col style="width: 1px;" />
+           
+            
+            </ColGroup>
+            <HeaderContent>
+                <MudTh>Date</MudTh>              
+                <MudTh>Note</MudTh>      
+                     
+                <MudTh></MudTh>  
+                <MudTh></MudTh>
+               
+            </HeaderContent>
+            <RowTemplate>         
+                <MudTd DataLabel="Date">@context.Date.Value.ToString("dd.MM.yyyy")</MudTd>
+   
+                <MudTd DataLabel="Note">@context.Note</MudTd>        
+                <MudTd Style="padding-right:0px" DataLabel=""><MudIconButton Icon="@Icons.Material.Filled.Edit" Variant="Variant.Filled" DisableElevation=true Color="Color.Warning" Size="Size.Small"  OnClick="@(()=>EditUserCalendar(@context))" ></MudIconButton></MudTd>     
+                <MudTd DataLabel=""><MudIconButton Icon="@Icons.Material.Filled.Delete" Variant="Variant.Filled" Color="Color.Error" DisableElevation=true  Size="Size.Small" OnClick="@(()=>DeleteUserCalendar(@context))"  ></MudIconButton></MudTd>   
+                
+                     
+            </RowTemplate>
+           <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+    </MudItem>
+</MudGrid>
+   
+@code {
+
+}

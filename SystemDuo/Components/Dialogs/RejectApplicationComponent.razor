@@ -1,0 +1,22 @@
+﻿<MudDialog Style="width:inherit">
+    <DialogContent>
+       <MudTextField T="string" Label="Rejection Reason" @bind-Value="@RejectionReason" Lines=3></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="@Color" Variant="Variant.Filled" OnClick="Submit">@ButtonText</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
+
+    [Parameter] public string? ContentText { get; set; }
+
+    [Parameter] public string? ButtonText { get; set; }
+
+    [Parameter] public Color Color { get; set; }
+    public string RejectionReason { get; set; } = "";
+
+    void Submit() => MudDialog!.Close(DialogResult.Ok(RejectionReason));
+    void Cancel() => MudDialog!.Cancel();
+}

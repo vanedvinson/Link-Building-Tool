@@ -1,0 +1,48 @@
+﻿@inherits CategoryViewModel
+
+
+<MudToolBar>  
+  <MudText Typo="Typo.h6">Jobs Categories</MudText>
+  
+</MudToolBar>
+<MudTable Class="m-4" Items="@Categories" Dense=true  Hover="true" Bordered="false" Breakpoint="Breakpoint.Sm" Elevation="4" Filter="new Func<Category,bool>(FilterFunc1)">
+    <ToolBarContent >
+       
+          <MudButton StartIcon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" Class="ma-2"  OnClick="OpenCreateCategoryDialog" >
+             New category 
+             </MudButton>
+        <MudSpacer />
+        <MudSpacer />
+        <MudSpacer />
+        <MudSpacer />
+        <MudSpacer />
+        <MudSpacer />
+        <MudSpacer />
+         <MudTextField Immediate="true" Variant="Variant.Outlined" @bind-Value="@SearchStringCategories" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0 w-25"></MudTextField>
+   
+     </ToolBarContent>
+      <ColGroup>
+        <col  />
+      
+        <col style="width: 60px;"/>
+        <col style="width: 60px;" />
+       
+        
+    </ColGroup>
+    <HeaderContent>
+        <MudTh>Name</MudTh>      
+        <MudTh></MudTh>  
+        <MudTh></MudTh>
+       
+    </HeaderContent>
+    <RowTemplate>         
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        
+       
+        <MudTd DataLabel="View"><MudIconButton Icon="@Icons.Material.Filled.Edit" Variant="Variant.Filled" Color="Color.Warning" Size="Size.Small" OnClick="@(()=>OpenUpdateCategoryDialog(@context))"></MudIconButton></MudTd>     
+        <MudTd DataLabel="Delete"><MudIconButton Icon="@Icons.Material.Filled.Delete" Variant="Variant.Filled" Color="Color.Error" OnClick="@(()=>DeleteCategory(@context.Id))" Size="Size.Small"  ></MudIconButton></MudTd>   
+        
+             
+    </RowTemplate>
+</MudTable>
+ 

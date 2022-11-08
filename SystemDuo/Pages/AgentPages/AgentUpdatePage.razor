@@ -1,0 +1,14 @@
+﻿@page "/agent/update/{agentId}"
+
+
+<AuthorizeView Roles="Administrator"> 
+    <Authorized>
+        <AgentFormComponent agentId="@agentId"></AgentFormComponent>
+</Authorized>
+    
+</AuthorizeView>
+
+
+@code {
+  [Parameter] public string agentId { get; set;  }
+}

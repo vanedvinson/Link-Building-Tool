@@ -1,0 +1,73 @@
+﻿@inherits LayoutComponentBase
+@attribute [Authorize]
+<MudThemeProvider Theme="MyCustomTheme" />
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+
+<AuthorizeView>
+    <Authorized>
+<MudLayout>
+    <MudAppBar Elevation="1" Color="Color.Dark" Style="background-color: #0E363C!important;">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" Style="border: 1px solid;" />
+                <MudImage Src="images/logo.png" Alt="Logo" Elevation="0" Style="width: 200px;margin-left: 20px;" />
+        <MudSpacer />
+        <MudText  Class="ml-auto">
+             Hello, @context.User.Identity?.Name!
+          </MudText>
+    </MudAppBar>
+    <MudDrawer  @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu/>
+    </MudDrawer>
+    <MudMainContent>
+        <main>
+   
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+    </MudMainContent>
+</MudLayout>
+</Authorized>
+</AuthorizeView>
+@code {
+    bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+    protected async override Task OnInitializedAsync()
+    {
+    }
+    MudTheme MyCustomTheme = new MudTheme()
+        {
+            Palette = new Palette()
+            {
+                Primary = Colors.Teal.Accent2,
+                Secondary = new MudBlazor.Utilities.MudColor("#0E363C"),
+                AppbarBackground = new MudBlazor.Utilities.MudColor("#0E363C"),
+                TextPrimary ="#0E363C"
+            },
+        };
+
+
+}
+
+@*<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4 auth">
+            <LoginDisplay />
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+*@

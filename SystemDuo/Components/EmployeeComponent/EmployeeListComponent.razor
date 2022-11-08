@@ -1,0 +1,120 @@
+﻿@inherits EmployeesViewModel
+
+<MudToolBar>  
+  <MudText Typo="Typo.h6">Employees</MudText>
+  
+</MudToolBar>
+<MudTable Class="ml-4 mr-4" Items="@Employees"  Hover="true" Bordered="false" Breakpoint="Breakpoint.Sm" Elevation="4" >
+    <ToolBarContent >
+       
+          <MudButton StartIcon="@Icons.Material.Filled.Add" Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" Class="ma-2" OnClick="NavigateToNewEmployee"  >
+             New employee 
+             </MudButton>
+        <MudSpacer />
+         <MudTextField @bind-Value="@searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+   
+     </ToolBarContent>
+      <ColGroup>
+        <col  />
+        <col  />
+        <col  />
+        <col  />
+        <col  />
+        
+      
+        <col style="width: 60px;"/>
+        <col style="width: 60px;" />
+       
+        
+    </ColGroup>
+    <HeaderContent>
+        <MudTh>First Name</MudTh>      
+        <MudTh>Last Name</MudTh>           
+        <MudTh>Title</MudTh>      
+        <MudTh>Hire Date</MudTh>      
+                     
+        <MudTh></MudTh>  
+        <MudTh></MudTh>
+       
+    </HeaderContent>
+    <RowTemplate>         
+        <MudTd DataLabel="FirstName">@context.User!.FirstName</MudTd>
+        <MudTd DataLabel="LastName">@context.User!.LastName</MudTd>
+        
+     
+  
+        <MudTd DataLabel="View"><MudIconButton Icon="@Icons.Material.Filled.Edit" Variant="Variant.Filled" Color="Color.Warning" Size="Size.Small"></MudIconButton></MudTd>     
+        <MudTd DataLabel="Delete"><MudIconButton Icon="@Icons.Material.Filled.Delete" Variant="Variant.Filled" Color="Color.Error"  Size="Size.Small"  ></MudIconButton></MudTd>   
+         <MudTd>
+          <MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@(() => ShowEmployeeJobDetails(context.Id))">@((context.ShowDetails == true)? "Hide" : "Show") details     
+          </MudButton>
+          </MudTd>
+             
+    </RowTemplate>
+    @* <ChildRowContent>
+		@if (context.ShowDetails)
+        {
+            <MudTr>
+                <td colspan="7">
+
+
+                    <MudCard Elevation="2">
+                        <MudCardHeader>
+                            <MudText>Jobs</MudText>
+                        </MudCardHeader>
+
+                        <MudCardContent>
+
+
+                            <MudTable Items="@context.EmployeeJob" Context="ItemsContext" Hover="true" Bordered="false" Breakpoint="Breakpoint.Sm" Elevation="2">
+                                <ToolBarContent>
+
+                                    <MudButton StartIcon="@Icons.Material.Filled.Add" Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" Class="ma-2"  >
+                                        New job position  </MudButton>
+                                    <MudSpacer />
+                                    <MudTextField @bind-Value="@searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+
+                                </ToolBarContent>
+                                <ColGroup>
+                                    <col />
+                                    <col />
+                                    <col />
+
+
+                                    <col style="width: 60px;" />
+
+
+                                </ColGroup>
+                                <HeaderContent>
+                                    <MudTh>Name</MudTh>	                   
+                                    <MudTh>Start Date</MudTh>	                   
+                                    <MudTh>End Date</MudTh>	                   
+
+                                    <MudTh></MudTh>
+
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd DataLabel="Name">@ItemsContext.Job.Name</MudTd>
+                                    <MudTd DataLabel="StartDate">@if (ItemsContext.StartDate != null){@ItemsContext.StartDate!.Value.ToShortDateString()}</MudTd>
+                                    <MudTd DataLabel="EndDate">@if (ItemsContext.EndDate != null)
+                                        {
+                                        @ItemsContext.EndDate!.Value.ToShortDateString()
+                                        }
+                                    </MudTd>
+
+                                     <MudTd>
+                                         <MudButton OnClick="@(()=>EndEmployeeJob(@ItemsContext))">End job</MudButton>
+                                    </MudTd>
+
+                                </RowTemplate>	      
+                            </MudTable>
+                        </MudCardContent>
+                    </MudCard>
+                </td>
+            </MudTr>
+        }
+    </ChildRowContent>*@
+           
+
+</MudTable>
+ 

@@ -1,0 +1,24 @@
+﻿@inherits EmployeeCreateViewModel
+<MudDialog style="width:1200px">
+    <DialogContent>
+      <MudTextField Label="Password" T="string" @bind-Value="Password" />     
+       
+    
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Success" Variant="Variant.Filled" OnClick="Submit">Send</MudButton>
+    </DialogActions>
+</MudDialog>
+@code
+{
+    [CascadingParameter] MudDialogInstance? MudDialogTest { get; set; }
+    public string Password { get; set; } = "";
+
+  //  [Parameter] public Job? SelectedJob { get; set; }
+
+ //   [Parameter] public Color Color { get; set; }
+
+    void Submit() => MudDialogTest!.Close(DialogResult.Ok(Password));
+    void Cancel() => MudDialogTest!.Cancel();
+}

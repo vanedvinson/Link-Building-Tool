@@ -1,0 +1,19 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="MyCustomTheme" />
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+@Body
+
+ @code{
+    MudTheme MyCustomTheme = new MudTheme()
+        {
+            Palette = new Palette()
+            {
+                Primary = Colors.Teal.Accent2,
+                Secondary = new MudBlazor.Utilities.MudColor("#0E363C"),
+                AppbarBackground = new MudBlazor.Utilities.MudColor("#0E363C"),
+                TextPrimary = "#0E363C"
+            },
+        };
+}    

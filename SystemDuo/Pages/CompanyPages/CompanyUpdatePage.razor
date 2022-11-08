@@ -1,0 +1,12 @@
+﻿@page "/company/update/{companyId:guid}"
+
+<AuthorizeView Roles="Administrator">
+    <Authorized>
+
+    </Authorized>
+</AuthorizeView>
+<CompanyFormComponent companyId="@companyId"></CompanyFormComponent>
+
+@code {
+  [Parameter] public Guid companyId { get; set;  }
+}

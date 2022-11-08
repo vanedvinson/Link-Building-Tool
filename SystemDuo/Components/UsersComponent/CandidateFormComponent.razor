@@ -1,0 +1,134 @@
+﻿@inherits CandidateCreateViewModel
+
+
+<MudToolBar>
+    <MudText Typo="Typo.h6">Candidates</MudText>
+</MudToolBar>
+ <EditForm Model="@Candidate" OnValidSubmit="@(()=>CreateOrUpdateCandidate())">
+     <DataAnnotationsValidator/>
+    <MudGrid Spacing="10" >
+        <MudItem xs="4">
+            <MudText Class="fw-bold">First Name</MudText>
+            <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="First Name"
+                          @bind-Value="Candidate.FirstName" For="@(() => Candidate.FirstName)" />
+            <MudText Class="fw-bold mt-2">Last Name</MudText>
+            <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="Last Name"
+                          @bind-Value="Candidate.LastName" For="@(() => Candidate.LastName)" />
+            <MudText Class="fw-bold mt-2">Date Of Birth</MudText>
+            <MudDatePicker Class="w-50 mt-0" Variant="Variant.Outlined" Placeholder="Date Of Birth" @bind-Date="@Candidate.DateOfBirth" Editable=true DateFormat="dd.MM.yyyy" />
+            <MudText Class="fw-bold mt-2">Country</MudText>
+            <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="Country"
+                          @bind-Value="Candidate.Country" For="@(() => Candidate.Country)" />
+            <div class="d-flex">
+                <div class="w-50 pr-2">
+                    <MudText Class="fw-bold mt-2 w-50">City</MudText>
+                    <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="City"
+                                  @bind-Value="Candidate.City" For="@(() => Candidate.City)" />
+                </div>
+                <div class="w-50 pl-2">
+                    <MudText Class="fw-bold mt-2 w-50">Zip Code</MudText>
+                    <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="Zip Code"
+                                  @bind-Value="Candidate.PostalCode" For="@(() => Candidate.PostalCode)" />
+                </div>
+            </div>
+            <MudText Class="fw-bold mt-2">Address</MudText>
+            <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="Address"
+                          @bind-Value="Candidate.Address" For="@(() => Candidate.Address)" />
+            <MudText Class="fw-bold mt-2">MobileNumber</MudText>
+            <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="Mobile Number"
+                          @bind-Value="Candidate.MobileNumber" For="@(() => Candidate.MobileNumber)" />
+            <MudText Class="fw-bold mt-2">Email</MudText>
+            <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="Email"
+                          @bind-Value="Candidate.Email" For="@(() => Candidate.Email)" />
+
+            <MudText Class ="fw-bold mt-2">Contract Type</MudText>
+             <MudCheckBox  @bind-Checked="@Candidate.LongTerm" Label="Long Term"></MudCheckBox>
+             <MudCheckBox @bind-Checked="@Candidate.ShortTerm" Label="Short Term"></MudCheckBox>
+             
+         @*      <MudSelect T="Skills" MultiSelection="true" SelectAll="true" Label="Skills" SelectAllText="Select all skills" @bind-SelectedValues="@SelectedSkills" >
+                @foreach(var d in Skills)
+                    {
+                <MudSelectItem Value="@d"/>
+                     }
+             
+             </MudSelect>*@
+             
+                                                          
+           @*    <MudSelect T="string" MultiSelection="true"  Label="Roles"  @bind-SelectedValues="@SelectedRoles" >
+                        @foreach(var ar in Roles)
+                            {
+                                <MudSelectItem Value="@ar.Name"/>
+                             }
+             
+             </MudSelect> *@   
+            
+              <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">@ButtonText</MudButton>
+              </MudCardActions>
+              
+        </MudItem>
+        <MudItem xs="8">
+            <MudText Class ="fw-bold mt-2">Category</MudText>
+            <MudSelect Class="mt-0" T="Category" @bind-Value="@SelectedCategory" Variant="Variant.Outlined" Placeholder="Category">
+                @foreach(var d in Categories)
+                    {
+                       <MudSelectItem Value="@d"/>
+                     }
+                      
+             </MudSelect>
+            <MudText Class="fw-bold mt-2">Education</MudText>
+            <MudSelect Class="mt-0" T="string" @bind-Value="@Candidate.Education" Variant="Variant.Outlined" Placeholder="Education">
+                <MudSelectItem Value=@("Elementary School") />
+                <MudSelectItem Value=@("High School") />
+                <MudSelectItem Value=@("Bachelor Degree") />
+                <MudSelectItem Value=@("Master Degree") />
+            </MudSelect>
+@*            <div class="d-flex align-items-center border-bottom w-50">
+
+                <MudText Style="width:75px"> Germany: </MudText>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A1" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A2" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B1" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B2" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C1" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C2" Color="Color.Primary"></MudCheckBox>
+            </div>
+            <div class="d-flex align-items-center">
+                <MudText Style="width:75px"> English: </MudText>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A1" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="A2" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B1" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="B2" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C1" Color="Color.Primary"></MudCheckBox>
+                <MudCheckBox @bind-Checked="SelectedLanguages" Label="C2" Color="Color.Primary"></MudCheckBox>
+            </div>*@
+           
+            <MudText Class="fw-bold mt-2">Languages</MudText>
+            <MudSelect Class="mt-0" T="string" MultiSelection="true" @bind-SelectedValues="@SelectedLanguages" Variant="Variant.Outlined" Placeholder="Languages">
+
+                <MudSelectItem Value=@("Germany") />
+                <MudSelectItem Value=@("Germany A1") />
+                <MudSelectItem Value=@("Germany A2") />
+                <MudSelectItem Value=@("Germany B1") />
+                <MudSelectItem Value=@("Germany B2") />
+                <MudSelectItem Value=@("Germany C1") />
+                <MudSelectItem Value=@("Germany C2") />
+
+                <MudSelectItem Value=@("English") />
+                <MudSelectItem Value=@("English A1") />
+                <MudSelectItem Value=@("English A2") />
+                <MudSelectItem Value=@("English B1") />
+                <MudSelectItem Value=@("English B2") />
+                <MudSelectItem Value=@("English C1") />
+                <MudSelectItem Value=@("English C2") />
+
+            </MudSelect>
+            <MudText Class="fw-bold mt-2">Notes</MudText>
+            <MudTextField Class="mt-0" Variant="Variant.Outlined" Placeholder="Notes"
+                          @bind-Value="Candidate.Notes" For="@(() => Candidate.Notes)" Lines="5" />
+
+        </MudItem>
+
+    </MudGrid>
+</EditForm>
+       

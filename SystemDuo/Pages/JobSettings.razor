@@ -1,0 +1,19 @@
+﻿
+@page "/jobssettings"
+
+<AuthorizeView Roles="Administrator">
+    <Authorized>
+        <MudTabs>
+    <MudTabPanel Text="Categories">
+        <CategoryListComponent></CategoryListComponent>
+    </MudTabPanel>
+    <MudTabPanel Text="Skills">
+        <SkillListComponent></SkillListComponent>
+    </MudTabPanel>
+</MudTabs>
+</Authorized>
+</AuthorizeView>
+
+@code {
+
+}

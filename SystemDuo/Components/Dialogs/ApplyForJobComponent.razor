@@ -1,0 +1,52 @@
+﻿
+@inject NavigationManager NavigationManager;
+
+<MudDialog style="width:1200px">
+    <DialogContent>
+       
+        <MudCard>
+            <MudCardHeader><MudText Typo="Typo.h6">
+                @SelectedJob!.ShortDescription
+            </MudText></MudCardHeader>
+           <MudCardContent>
+           
+        
+          <MudCard>
+              <MudCardHeader>Details</MudCardHeader>
+              <MudCardContent>
+                  <MudText>@SelectedJob!.Description</MudText>
+                  <MudText>Skills</MudText>
+                   @if(SelectedJob!.JobSkills!=null){
+                    @foreach(var skill in SelectedJob.JobSkills)
+                    {
+                    <MudChip Color="Color.Primary">@skill.Skill!.Name</MudChip>
+                    }
+                   }
+              </MudCardContent>
+
+          </MudCard>
+       
+           </MudCardContent>
+        
+        </MudCard>
+        
+        <MudText></MudText>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="@Color" Variant="Variant.Filled" OnClick="Submit">Send</MudButton>
+    </DialogActions>
+</MudDialog>
+@code
+{
+    [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
+    [Parameter] public Job? SelectedJob { get; set; }
+
+    [Parameter] public Color Color { get; set; }
+
+    void Submit() => MudDialog!.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog!.Cancel();
+
+}
+
+       

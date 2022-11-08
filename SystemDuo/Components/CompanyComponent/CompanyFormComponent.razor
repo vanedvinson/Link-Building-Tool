@@ -1,0 +1,60 @@
+﻿@inherits CompanyCreateUpdateViewModel
+
+@page "/create/company"
+
+<MudToolBar>  
+  <MudText Typo="Typo.h6">New company</MudText>
+  
+</MudToolBar>
+ <EditForm Model="@Company" OnValidSubmit="@(()=>CreateOrUpdateCompany())">
+<MudCard Class="m-4" Elevation="0">
+    <MudCardContent>
+       <MudText Class="fw-bold mt-2">Name</MudText>
+        <MudTextField Variant="Variant.Outlined" Placeholder="Name" 
+                              @bind-Value="Company.Name" For="@(() => Company.Name)" />
+        @* <MudTextField Label="Country" 
+                              @bind-Value="Company.Country" For="@(() => Company.Country)" />
+         <MudTextField Label="City" 
+                              @bind-Value="Company.City" For="@(() => Company.City)" />
+         <MudTextField Label="Address" 
+                              @bind-Value="Company.Address" For="@(() => Company.Address)" />  *@
+       <MudText Class="fw-bold mt-2">Location</MudText>
+        <MudSelect T="Location"  @bind-Value="@Company.Location" Variant="Variant.Outlined" Placeholder="Location">
+            <MudSelectItem Value="@(new Location())"><p @onclick="@OpenCreateLocation">Add</p></MudSelectItem>
+                @foreach(var d in Locations)
+                {
+                    <MudSelectItem Value="@d"/>
+                }
+            </MudSelect>
+       <MudText Class="fw-bold mt-2">Email</MudText>
+        <MudTextField Variant="Variant.Outlined" Placeholder="Email" 
+                                  @bind-Value="Company.Email" For="@(() => Company.Email)" />
+       <MudText Class="fw-bold mt-2">Category</MudText>
+        <MudSelect T="Category" @bind-Value="@SelectedJobCategory" Variant="Variant.Outlined" Placeholder="Category">
+            @foreach(var d in JobsCategories)
+            {
+                <MudSelectItem Value="@d"/>
+            }
+        </MudSelect>
+       <MudText Class="fw-bold mt-2">Tax Number</MudText>
+        <MudTextField Variant="Variant.Outlined" Placeholder="Tax Number"
+                          @bind-Value="Company.TaxNumber" For="@(() => Company.TaxNumber)" />
+        <MudText Class="fw-bold mt-2">Total Position Number</MudText>
+         <MudTextField Variant="Variant.Outlined" Placeholder="Total Position Number" 
+                              @bind-Value="Company.OpenPositionNumber" For="@(() => Company.OpenPositionNumber)" />    
+                              
+        <MudText Class="fw-bold mt-2">Contract Type</MudText>
+         <MudCheckBox  @bind-Checked="@Company.LongTerm" Label="Long Term"></MudCheckBox>
+         <MudCheckBox @bind-Checked="@Company.ShortTerm" Label="Short Term"></MudCheckBox>
+        <MudText Class="fw-bold mt-2">Description</MudText>
+         <MudTextField Variant="Variant.Outlined" Placeholder="Description" 
+                              @bind-Value="Company.Note" For="@(() => Company.Note)" Lines="5" />                           
+       
+        
+          <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Create</MudButton>
+            </MudCardActions>
+    </MudCardContent>
+
+</MudCard>
+</EditForm>
