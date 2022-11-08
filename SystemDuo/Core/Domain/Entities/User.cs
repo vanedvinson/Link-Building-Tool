@@ -29,12 +29,12 @@ namespace SystemDuo.Core.Domain.Entities
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? DeletedAt { get; set; } //For soft delete
         public Guid? CategoryId { get; set; }
-        public virtual Category? Category { get; set; } //category of interest ?? 
-        public ICollection<Application>? CandidateApplications { get; set; }
-        public ICollection<ApplicantSkills>? CandidateSkills { get; set; }
+        //public virtual Category? Category { get; set; } //category of interest ?? 
+        //public ICollection<Application>? CandidateApplications { get; set; }
+        //public ICollection<ApplicantSkills>? CandidateSkills { get; set; }
         public virtual ICollection<UserRole> Roles { get; set; } = new List<UserRole>();
    
-        public ICollection<EmployeeJob> EmployeeJob { get; set; } = new List<EmployeeJob>(); //trenutna pozicija??  zadnja ako nema end date?                                                                                           
+        //public ICollection<EmployeeJob> EmployeeJob { get; set; } = new List<EmployeeJob>(); //trenutna pozicija??  zadnja ako nema end date?                                                                                           
         
         
         
