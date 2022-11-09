@@ -18,8 +18,8 @@ namespace SystemDuo.Core.Persistence.Configurations
                 CreatedAt = DateTime.Now,
                 UserName = "admin",
                 NormalizedUserName = "ADMIN",
-                Email = "ekovacevic.10@gmail.com",
-                NormalizedEmail = "ekovacevic.10@gmail.com",
+                Email = "benjamin@an-digital.com",
+                NormalizedEmail = "BENJAMIN@AN-DIGITAL.COM",
                 EmailConfirmed = true,
                 PhoneNumber = "0600103693",
                 SecurityStamp = string.Empty
@@ -33,8 +33,8 @@ namespace SystemDuo.Core.Persistence.Configurations
                 CreatedAt = DateTime.Now,
                 UserName = "linkbuilder",
                 NormalizedUserName = "LINKBUILDER",
-                Email = "e.kovacevic10@gmail.com",
-                NormalizedEmail = "E.KOVACEVIC10@GMAIL.COM",
+                Email = "milan@an-digital.com",
+                NormalizedEmail = "MILAN@AN-DIGITAL.COM",
                 EmailConfirmed = true,
                 PhoneNumber = "0600103693",
                 SecurityStamp = string.Empty
