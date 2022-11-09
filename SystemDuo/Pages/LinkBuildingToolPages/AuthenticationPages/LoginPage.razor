@@ -17,9 +17,9 @@
 
 <MudPaper Class="py-1 px-3 " Style="height:100vh;  background-color:#0E363C ">
     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3" Style="height:80vh;">
-        <MudPaper Elevation="0">
-            <MudImage Src="images/logo.png" Alt="Logo" Elevation="0" />
-        </MudPaper>
+        
+        <MudImage Src="images/logo.png" Alt="Logo" Elevation="0" />
+        
         <MudPaper Style="border-radius:30px;" Elevation="0">
             <EditForm Model="_userForAuthentication" OnValidSubmit="ExecuteLogin" style="align-items:center; display:flex; flex-direction:column;">
                 <DataAnnotationsValidator />
@@ -36,7 +36,9 @@
                         <MudTextField Variant="Variant.Outlined" Placeholder="Password..."
                                       @bind-Value="_userForAuthentication.Password" For="@(() => _userForAuthentication.Password)" InputType="InputType.Password" />
 
-                        <p style="padding-top:16px;color:#5CAFE1; cursor: pointer;font-weight:bold" @onclick="OpenForgotPasswordPage">Forgot your password?</p>
+                        @*                        
+                            <p style="padding-top:16px;color:#5CAFE1; cursor: pointer;font-weight:bold" @onclick="OpenForgotPasswordPage">Forgot your password?</p>
+                        *@                    
                     </div>
                     <MudCardActions Style="display:flex; flex-direction:column;padding:16px">
                         <MudButton @onclick="ExecuteLogin" Style="width: 100%;" Variant="Variant.Filled" Color="Color.Primary" FullWidth="true">Log In ></MudButton>

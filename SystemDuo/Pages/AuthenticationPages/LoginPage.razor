@@ -1,5 +1,8 @@
 ﻿
-@page "/ttttttt"
+<!--
+    THIS IS NOT THE LOGIN PAGE
+    THIS HAS TO BE DELETED
+-->
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
@@ -17,9 +20,9 @@
 
 <MudPaper Class="py-1 px-3 " Style="height:100vh;  background-color:#0E363C ">
     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="3" Style="height:80vh;">
-        <MudPaper Elevation="0">
-            <MudImage Src="images/logo.png" Alt="Logo" Elevation="0" />
-        </MudPaper>
+        
+        <MudImage Src="images/logo.png" Alt="Logo" Elevation="0" />
+        
         <MudPaper Style="border-radius:30px;" Elevation="0">
             <EditForm Model="_userForAuthentication"  OnValidSubmit="ExecuteLogin"  style="align-items:center; display:flex; flex-direction:column;">
             <DataAnnotationsValidator />
