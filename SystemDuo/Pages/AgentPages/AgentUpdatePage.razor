@@ -1,7 +1,7 @@
 ﻿@page "/agent/update/{agentId}"
 
 
-<AuthorizeView Roles="Administrator"> 
+<AuthorizeView Roles="Admin"> 
     <Authorized>
         <AgentFormComponent agentId="@agentId"></AgentFormComponent>
 </Authorized>
