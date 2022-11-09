@@ -1,0 +1,47 @@
+﻿@inherits ClientCreateUpdateViewModel
+
+@using LinkBuildingTool.Core.Domain.Entities;
+
+<MudText Typo="Typo.h5">Create Client</MudText>
+<MudSpacer />
+
+<EditForm Model="@Client"
+          OnValidSubmit="@(() => CreateOrUpdateClient())">
+    <MudCard Class="m-4"
+             Elevation="0">
+        <MudCardContent>
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Name"
+                          @bind-Value="Client.Name"
+                          For="@(()=> Client.Name)" />
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Prio URL"
+                          @bind-Value="Client.PrioUrl"
+                          For="@(()=> Client.PrioUrl)" />
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Note"
+                          Lines="3"
+                          @bind-Value="Client.Note"
+                          For="@(()=> Client.Note)" />
+            <MudSelect T="ClientType" @bind-value="@SelectedType" Label="Art" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var item in Types)
+                {
+                    <MudSelectItem Value="@item">@item.Name</MudSelectItem>
+                }
+            </MudSelect>
+            <span>Is Active </span>
+            <MudSwitch 
+                @bind-Checked="@Client.IsActive" 
+                Color="Color.Primary" />
+            
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit"
+                           Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Class="ml-auto">
+                    Save
+                </MudButton>
+            </MudCardActions>
+        </MudCardContent>
+    </MudCard>
+</EditForm>

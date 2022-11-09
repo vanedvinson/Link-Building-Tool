@@ -1,0 +1,122 @@
+﻿@inherits TodoCreateUpdateViewModel
+@using LinkBuildingTool.Core.Domain.Entities;
+
+
+<MudSpacer/>
+
+<EditForm
+    Model="@Todo"
+    OnValidSubmit="@(() => CreateOrUpdateTodo())">
+
+    <MudCard Class="m-4"
+             Elevation="0">
+        <MudCardContent>
+            <!--Title-->
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Title"
+                          @bind-Value="Todo.Title"
+                          For="@(()=> Todo.Title)" />
+
+            <!--Select Status-->
+            <MudSelect T="Status" @bind-value="@SelectedStatus" Disabled="true" Label="Status" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var item in Statuses)
+                {
+                    <MudSelectItem Value="@item">@item.Name</MudSelectItem>
+                }
+            </MudSelect>
+            <!--Select Link Attr-->
+            <MudSelect T="LinkAttribute" @bind-value="@SelectedLinkAttribute" Label="Link Attribute" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var item in LinkAttributes)
+                {
+                    <MudSelectItem Value="@item">@item.Name</MudSelectItem>
+                }
+            </MudSelect>
+            <!--Select Link Type-->
+            <MudSelect T="LinkType" @bind-value="@SelectedLinkType" Label="Link Type" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var item in LinkTypes)
+                {
+                    <MudSelectItem Value="@item">@item.Name</MudSelectItem>
+                }
+            </MudSelect>
+            <!--Select Domain-->
+            <MudSelect T="ClientDomain" @bind-value="@SelectedClientDomain" Label="Domain" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var item in Domains)
+                {
+                    <MudSelectItem Value="@item">@item.Name</MudSelectItem>
+                }
+            </MudSelect>
+            <!--Select Client-->
+            <MudSelect T="Client" @bind-value="@SelectedClient" Label="Client" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                @foreach (var item in Clients)
+                {
+                    <MudSelectItem Value="@item">@item.Name</MudSelectItem>
+                }
+            </MudSelect>
+            <!--Select Client Type-->
+            @*<MudTextField Variant="Variant.Outlined"
+                          Label="Title"
+                          Disabled="true"
+                          @bind-Value="Todo.Client!.Type!.Name"
+                          For="@(()=> Todo.Client!.Type!.Name)" />*@
+            <!--Str Theme-->
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Theme"
+                          @bind-Value="Todo.Theme"
+                          For="@(()=> Todo.Theme)" />
+            <!--Str Link Target-->
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Link Target"
+                          @bind-Value="Todo.LinkTarget"
+                          For="@(()=> Todo.LinkTarget)" />
+            <!--Str Anchor text-->
+            <MudTextField Variant="Variant.Outlined"
+                          Label="AnchorText"
+                          @bind-Value="Todo.AnchorText"
+                          For="@(()=> Todo.AnchorText)" />
+            <!--if client type then double Budget amount or INT link Amount-->
+            @*@if(Todo.Client != null){
+                @if(Todo.Client!.Type!.Name == "Budget"){
+                <MudTextField Variant="Variant.Outlined"
+                              Label="Name"
+                              @bind-Value="Todo.BudgetAmount"
+                              For="@(()=> Todo.BudgetAmount)" />
+                }
+                @if(Todo.Client!.Type!.Name == "Anzahl"){
+                <MudTextField Variant="Variant.Outlined"
+                              Label="Name"
+                              @bind-Value="Todo.LinkAmount"
+                              For="@(()=> Todo.LinkAmount)" />
+                }
+            }*@
+            <!--Str Note-->
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Note"
+                          @bind-Value="Todo.Note"
+                          For="@(()=> Todo.Note)" />
+            <!--Double Price-->
+            <MudTextField Variant="Variant.Outlined"
+                          Label="Price"
+                          @bind-Value="Todo.Price"
+                          For="@(()=> Todo.Price)" />
+            <!--Str text link-->
+            <MudTextField Variant="Variant.Outlined"
+                          Label="TextLink"
+                          @bind-Value="Todo.TextLink"
+                          For="@(()=> Todo.TextLink)" />
+            
+
+
+
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit"
+                           Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Class="ml-auto">
+                    Save
+                </MudButton>
+            </MudCardActions>
+        </MudCardContent>
+    </MudCard>
+
+
+</EditForm>
