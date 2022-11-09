@@ -9,20 +9,33 @@
   @*<MudText Typo="Typo.body2" Class="px-4 mud-text-secondary">Icons</MudText>*@
   <MudDivider Class="my-2" />
 
-  <MudNavLink Href="/dashboard" Icon="@Icons.Filled.Dashboard">Dashboard</MudNavLink>
 
-  <MudNavLink Href="/jobs" Icon="@Icons.Filled.List">Jobs</MudNavLink>    
 
 <AuthorizeView Roles="Admin">
     <Authorized>
-  
-    <MudNavLink Href="/companies" Icon="@Icons.Filled.Apartment">Company</MudNavLink>
-
+        <MudNavLink Href="/dashboard" Icon="@Icons.Filled.Layers">Dashboard</MudNavLink>
+        <MudNavLink Href="/links" Icon="@Icons.Filled.InsertLink">Links</MudNavLink>
+        <MudNavLink Href="/clients" Icon="@Icons.Filled.Business">Clients</MudNavLink>
+        <MudNavLink Href="/domains" Icon="@Icons.Filled.AddLink">Domains</MudNavLink>
+        <MudNavLink Href="/webmasters" Icon="@Icons.Filled.ManageAccounts">Webmasters</MudNavLink>
+        <MudNavLink Href="/accounts" Icon="@Icons.Filled.SupervisorAccount">Users</MudNavLink>
+        <MudNavLink Href="/auth/change-password" Icon="@Icons.Outlined.AccountCircle">My Account</MudNavLink>
     </Authorized>
 </AuthorizeView>
- <MudNavLink Href="/candidates" Icon="@Icons.Filled.Person">Candidates</MudNavLink>
- <MudNavLink Href="/auth/change-password" Icon="@Icons.Filled.Password">My Account</MudNavLink>
-<AuthorizeView Roles="Admin">
+
+<AuthorizeView Roles="Linkbuilder">
+    <Authorized>
+        <MudNavLink Href="/dashboard" Icon="@Icons.Filled.Layers">Dashboard</MudNavLink>
+        <MudNavLink Href="/links" Icon="@Icons.Filled.InsertLink">Links</MudNavLink>
+        <MudNavLink Href="/clients" Icon="@Icons.Filled.Business">Clients</MudNavLink>
+        <MudNavLink Href="/domains" Icon="@Icons.Filled.AddLink">Domains</MudNavLink>
+        <MudNavLink Href="/webmasters" Icon="@Icons.Filled.ManageAccounts">Webmasters</MudNavLink>
+        <MudNavLink Href="/accounts" Icon="@Icons.Filled.SupervisorAccount">Users</MudNavLink>
+        <MudNavLink Href="/auth/change-password" Icon="@Icons.Outlined.AccountCircle">My Account</MudNavLink>
+    </Authorized>
+</AuthorizeView>
+ 
+@*<AuthorizeView Roles="Admin">
     <Authorized>
       <MudNavGroup Title="Settings" Icon="@Icons.Filled.Settings"  Expanded="true">
                 <MudNavLink Href="/agents" Icon="@Icons.Filled.SupervisorAccount" >Agents</MudNavLink>
@@ -30,7 +43,7 @@
       <MudNavLink Href="/jobssettings" Icon="@Icons.Filled.Category">Category and Skills</MudNavLink>       
    </MudNavGroup>
    </Authorized>
-</AuthorizeView>
+</AuthorizeView>*@
 <div class="w-100 p-3 text-center position-absolute bottom-0 ">
            <MudButton  Class="w-100 p-2" OnClick="Logout" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Logout" Color="Color.Primary">Logout</MudButton>
        </div>
