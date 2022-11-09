@@ -74,24 +74,58 @@
                 </MudSelect>
               </MudTd>
               <MudTd>
+
+
+
+                  <AuthorizeView Roles="Admin">
+                        <Authorized Context="yo">
+                            <MudIconButton OnClick="@(() => ApproveStatus(context))"
+                                           Icon="@Icons.Filled.Check"
+                                           Variant="Variant.Filled"
+                                           Color="Color.Primary"
+                                           Size="Size.Small" />
+                        </Authorized>
+                  </AuthorizeView>
+
+
+                  @*
+
                  <MudIconButton 
-                     @onclick="@(() => ApproveStatus(context))"
+                     OnClick="@(() => ApproveStatus(context))"
                      Icon="@Icons.Filled.Check" 
                      Variant="Variant.Filled" 
                      Color="Color.Primary" 
                      Size="Size.Small" />
+                     *@
               </MudTd>
               <MudTd>@context.LinkAttribute!.Name</MudTd>
               <MudTd>@context.LinkType!.Name</MudTd>
               <MudTd></MudTd>
               <MudTd>@context.Price€ @if (context.ApprovePrice == true) { <span> - Approved</span> } </MudTd>
               <MudTd>
+
+
+                <AuthorizeView Roles="Admin">
+                    <Authorized Context="yo">
+                        <MudIconButton Icon="@Icons.Filled.Check"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   Size="Size.Small"
+                                   OnClick="@(()=>ApprovePrice(context))" />
+                    </Authorized>
+                </AuthorizeView>
+
+
+                @*
                 <MudIconButton 
                     Icon="@Icons.Filled.Check" 
                     Variant="Variant.Filled" 
                     Color="Color.Primary" 
                     Size="Size.Small"
                     OnClick="@(()=>ApprovePrice(context))" />
+
+                    *@
+
               </MudTd>
               <MudTd>@context.Domain!.Name</MudTd>
               <MudTd>@context.Client!.Name</MudTd>
