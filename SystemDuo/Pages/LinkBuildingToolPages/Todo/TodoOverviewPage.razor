@@ -1,6 +1,6 @@
 ﻿@page "/todos/overview/{todoId:guid}"
 
-<LinkBuildingTool.Components.Todo.TodoOverviewComponent todoId="@todoId"></LinkBuildingTool.Components.Todo.TodoOverviewComponent>
+<TodoOverviewComponent todoId="@todoId"></TodoOverviewComponent>
 
 @code{
     [Parameter] public Guid todoId {get; set;}
