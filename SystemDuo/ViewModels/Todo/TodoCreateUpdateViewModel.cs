@@ -113,7 +113,7 @@ namespace SystemDuo.ViewModels
                 {
                     Snackbar!.Add("Successfully updated", Severity.Success);
                     Todo = new();
-                    NavigationManager!.NavigateTo("/", false);
+                    NavigationManager!.NavigateTo("/dashboard", false);
                 }
                 else
                 {
@@ -133,7 +133,7 @@ namespace SystemDuo.ViewModels
                 {
                     Snackbar!.Add("Successfully created", Severity.Success);
                     Todo = new();
-                    NavigationManager!.NavigateTo("/", false);
+                    NavigationManager!.NavigateTo("/dashboard", false);
                 }
                 else
                 {
